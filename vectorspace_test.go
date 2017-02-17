@@ -27,3 +27,13 @@ func TestConcordance(t *testing.T) {
 		t.Errorf("Cocordance expect (test) to have 1")
 	}
 }
+
+func TestMagnitude(t *testing.T) {
+	var concordance = Concordance("this is a test")
+	var got = Magnitude(concordance)
+
+	if got != 2 {
+		t.Errorf("Magnitude expected 2")
+	}
+
+}
