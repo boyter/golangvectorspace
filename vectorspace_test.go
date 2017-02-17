@@ -90,3 +90,13 @@ func TestRelationSimilarStrings(t *testing.T) {
 		t.Errorf("Relation expected 0.48211825989991874 but got %q", got)
 	}
 }
+
+func BenchmarkRelation(b *testing.B) {
+
+	var concordance1 = Concordance("Go has a lightweight test framework composed of the go test command and the testing package.")
+	var concordance2 = Concordance("Package testing provides support for automated testing of Go packages. It is intended to be used in concert with the go test command, which automates execution of any function of the form.")
+
+	for i := 0; i < b.N; i++ {
+		Relation(concordance1, concordance2)
+	}
+}
