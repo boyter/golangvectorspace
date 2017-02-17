@@ -28,6 +28,15 @@ func TestConcordance(t *testing.T) {
 	}
 }
 
+func TestConcordanceCase(t *testing.T) {
+	var concordance = Concordance("this THIS thIS ThIs")
+
+	got := concordance["this"]
+	if got != 4 {
+		t.Errorf("Cocordance expect (test) to have 1 but got %q", got)
+	}
+}
+
 func TestMagnitude(t *testing.T) {
 	var concordance = Concordance("this is a test")
 	var got = Magnitude(concordance)
