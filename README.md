@@ -14,3 +14,17 @@ got := Relation(concordance1, concordance2)
 
 
 See tests for other examples.
+
+To benchmark,
+
+```
+go test -bench .
+```
+
+On a late 2013 Macbook Pro 2.6 GHz Intel Core i5
+
+```
+BenchmarkRelation-4   	 1000000	      2364 ns/op
+BenchmarkRelation-4   	 1000000	      2396 ns/op
+BenchmarkRelation-4   	 1000000	      2318 ns/op
+```
