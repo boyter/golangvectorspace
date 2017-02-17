@@ -28,3 +28,10 @@ BenchmarkRelation-4   	 1000000	      2364 ns/op
 BenchmarkRelation-4   	 1000000	      2396 ns/op
 BenchmarkRelation-4   	 1000000	      2318 ns/op
 ```
+
+Coverage
+
+```
+go test -cover .
+ok  	github.com/boyter/golangvectorspace	0.006s	coverage: 95.7% of statements
+```
