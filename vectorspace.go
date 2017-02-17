@@ -6,7 +6,7 @@ import (
 )
 
 func Magnitude(con map[string]float64) float64 {
-	var total float64 = 0
+	total := 0.0
 
 	for _, v := range con {
 		total = total + math.Pow(v, 2)
@@ -19,7 +19,7 @@ func Concordance(document string) map[string]float64 {
 	var con map[string]float64
 	con = make(map[string]float64)
 
-	var words = strings.Split(strings.ToLower(document), " ")
+	words := strings.Split(strings.ToLower(document), " ")
 
 	for _, key := range words {
 
@@ -39,7 +39,7 @@ func Concordance(document string) map[string]float64 {
 }
 
 func Relation(con1 map[string]float64, con2 map[string]float64) float64 {
-	var topvalue float64 = 0
+	topvalue := 0.0
 
 	for name, count := range con1 {
 		_, ok := con2[name]
