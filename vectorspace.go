@@ -7,7 +7,7 @@ import (
 
 type Concordance map[string]float64
 
-func Magnitude(con Concordance) float64 {
+func (con Concordance) Magnitude() float64 {
 	total := 0.0
 
 	for _, v := range con {
@@ -51,7 +51,7 @@ func Relation(con1 Concordance, con2 Concordance) float64 {
 		}
 	}
 
-	mag := Magnitude(con1) * Magnitude(con2)
+	mag := con1.Magnitude() * con2.Magnitude()
 
 	if mag != 0 {
 		return topvalue / mag

@@ -39,7 +39,7 @@ func TestConcordanceCase(t *testing.T) {
 
 func TestMagnitude(t *testing.T) {
 	var concordance = BuildConcordance("this is a test")
-	var got = Magnitude(concordance)
+	var got = concordance.Magnitude()
 
 	if got != 2 {
 		t.Errorf("Magnitude expected 2 but got %q", got)
