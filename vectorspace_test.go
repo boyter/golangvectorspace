@@ -5,7 +5,7 @@ import (
 )
 
 func TestConcordance(t *testing.T) {
-	var concordance = Concordance("this is a test")
+	var concordance = BuildConcordance("this is a test")
 
 	got := concordance["this"]
 	if got != 1 {
@@ -29,7 +29,7 @@ func TestConcordance(t *testing.T) {
 }
 
 func TestConcordanceCase(t *testing.T) {
-	var concordance = Concordance("this THIS thIS ThIs")
+	var concordance = BuildConcordance("this THIS thIS ThIs")
 
 	got := concordance["this"]
 	if got != 4 {
@@ -38,7 +38,7 @@ func TestConcordanceCase(t *testing.T) {
 }
 
 func TestMagnitude(t *testing.T) {
-	var concordance = Concordance("this is a test")
+	var concordance = BuildConcordance("this is a test")
 	var got = Magnitude(concordance)
 
 	if got != 2 {
@@ -48,8 +48,8 @@ func TestMagnitude(t *testing.T) {
 }
 
 func TestRelationSameExpectOne(t *testing.T) {
-	var concordance1 = Concordance("this is a test")
-	var concordance2 = Concordance("this is a test")
+	var concordance1 = BuildConcordance("this is a test")
+	var concordance2 = BuildConcordance("this is a test")
 
 	got := Relation(concordance1, concordance2)
 
@@ -59,8 +59,8 @@ func TestRelationSameExpectOne(t *testing.T) {
 }
 
 func TestRelationSimilarExpectSimilar(t *testing.T) {
-	var concordance1 = Concordance("this is a test")
-	var concordance2 = Concordance("this test")
+	var concordance1 = BuildConcordance("this is a test")
+	var concordance2 = BuildConcordance("this test")
 
 	got := Relation(concordance1, concordance2)
 
@@ -70,8 +70,8 @@ func TestRelationSimilarExpectSimilar(t *testing.T) {
 }
 
 func TestRelationDifferentExpectZero(t *testing.T) {
-	var concordance1 = Concordance("this is a test")
-	var concordance2 = Concordance("not related at all")
+	var concordance1 = BuildConcordance("this is a test")
+	var concordance2 = BuildConcordance("not related at all")
 
 	got := Relation(concordance1, concordance2)
 
@@ -81,8 +81,8 @@ func TestRelationDifferentExpectZero(t *testing.T) {
 }
 
 func TestRelationSimilarStrings(t *testing.T) {
-	var concordance1 = Concordance("Go has a lightweight test framework composed of the go test command and the testing package.")
-	var concordance2 = Concordance("Package testing provides support for automated testing of Go packages. It is intended to be used in concert with the go test command, which automates execution of any function of the form.")
+	var concordance1 = BuildConcordance("Go has a lightweight test framework composed of the go test command and the testing package.")
+	var concordance2 = BuildConcordance("Package testing provides support for automated testing of Go packages. It is intended to be used in concert with the go test command, which automates execution of any function of the form.")
 
 	got := Relation(concordance1, concordance2)
 
@@ -93,8 +93,8 @@ func TestRelationSimilarStrings(t *testing.T) {
 
 func BenchmarkRelation(b *testing.B) {
 
-	var concordance1 = Concordance("Go has a lightweight test framework composed of the go test command and the testing package.")
-	var concordance2 = Concordance("Package testing provides support for automated testing of Go packages. It is intended to be used in concert with the go test command, which automates execution of any function of the form.")
+	var concordance1 = BuildConcordance("Go has a lightweight test framework composed of the go test command and the testing package.")
+	var concordance2 = BuildConcordance("Package testing provides support for automated testing of Go packages. It is intended to be used in concert with the go test command, which automates execution of any function of the form.")
 
 	for i := 0; i < b.N; i++ {
 		Relation(concordance1, concordance2)

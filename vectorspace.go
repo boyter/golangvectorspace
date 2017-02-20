@@ -5,7 +5,9 @@ import (
 	"strings"
 )
 
-func Magnitude(con map[string]float64) float64 {
+type Concordance map[string]float64
+
+func Magnitude(con Concordance) float64 {
 	total := 0.0
 
 	for _, v := range con {
@@ -15,7 +17,7 @@ func Magnitude(con map[string]float64) float64 {
 	return math.Sqrt(total)
 }
 
-func Concordance(document string) map[string]float64 {
+func BuildConcordance(document string) Concordance {
 	var con map[string]float64
 	con = make(map[string]float64)
 
@@ -38,7 +40,7 @@ func Concordance(document string) map[string]float64 {
 	return con
 }
 
-func Relation(con1 map[string]float64, con2 map[string]float64) float64 {
+func Relation(con1 Concordance, con2 Concordance) float64 {
 	topvalue := 0.0
 
 	for name, count := range con1 {
