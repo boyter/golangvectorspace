@@ -11,22 +11,22 @@ func TestConcordance(t *testing.T) {
 
 	got := concordance["this"]
 	if got != 1 {
-		t.Errorf("Cocordance expect (test) to have 1 but got %q", got)
+		t.Errorf("Cocordance expect (test) to have 1 but got %v", got)
 	}
 
 	got = concordance["is"]
 	if got != 1 {
-		t.Errorf("Cocordance expect (test) to have 1 but got %q", got)
+		t.Errorf("Cocordance expect (test) to have 1 but got %v", got)
 	}
 
 	got = concordance["a"]
 	if got != 1 {
-		t.Errorf("Cocordance expect (test) to have 1 but got %q", got)
+		t.Errorf("Cocordance expect (test) to have 1 but got %v", got)
 	}
 
 	got = concordance["test"]
 	if got != 1 {
-		t.Errorf("Cocordance expect (test) to have 1 but got %q", got)
+		t.Errorf("Cocordance expect (test) to have 1 but got %v", got)
 	}
 }
 
@@ -35,7 +35,7 @@ func TestConcordanceCase(t *testing.T) {
 
 	got := concordance["this"]
 	if got != 4 {
-		t.Errorf("Cocordance expect (test) to have 1 but got %q", got)
+		t.Errorf("Cocordance expect (test) to have 1 but got %v", got)
 	}
 }
 
@@ -44,7 +44,7 @@ func TestMagnitude(t *testing.T) {
 	var got = concordance.Magnitude()
 
 	if got != 2 {
-		t.Errorf("Magnitude expected 2 but got %q", got)
+		t.Errorf("Magnitude expected 2 but got %v", got)
 	}
 
 }
@@ -56,7 +56,7 @@ func TestRelationSameExpectOne(t *testing.T) {
 	got := Relation(concordance1, concordance2)
 
 	if got != 1 {
-		t.Errorf("Relation expected 1 but got %q", got)
+		t.Errorf("Relation expected 1 but got %v", got)
 	}
 }
 
@@ -67,7 +67,7 @@ func TestRelationSimilarExpectSimilar(t *testing.T) {
 	got := Relation(concordance1, concordance2)
 
 	if got != 0.7071067811865475 {
-		t.Errorf("Relation expected 0.7071067811865475 but got %q", got)
+		t.Errorf("Relation expected 0.7071067811865475 but got %v", got)
 	}
 }
 
@@ -78,7 +78,7 @@ func TestRelationDifferentExpectZero(t *testing.T) {
 	got := Relation(concordance1, concordance2)
 
 	if got != 0 {
-		t.Errorf("Relation expected 0.5 but got %q", got)
+		t.Errorf("Relation expected 0.5 but got %v", got)
 	}
 }
 
@@ -89,7 +89,7 @@ func TestRelationSimilarStrings(t *testing.T) {
 	got := Relation(concordance1, concordance2)
 
 	if got != 0.48211825989991874 {
-		t.Errorf("Relation expected 0.48211825989991874 but got %q", got)
+		t.Errorf("Relation expected 0.48211825989991874 but got %v", got)
 	}
 }
 

@@ -1,3 +1,3 @@
-module github.com/boyter/golangvectorspace
+module golangvectorspace
 
 go 1.20
