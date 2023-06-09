@@ -88,8 +88,8 @@ func TestRelationSimilarStrings(t *testing.T) {
 
 	got := Relation(concordance1, concordance2)
 
-	if got != 0.48211825989991874 {
-		t.Errorf("Relation expected 0.48211825989991874 but got %v", got)
+	if got != 0.5464006945532413 {
+		t.Errorf("Relation expected 0.5464006945532413 but got %v", got)
 	}
 }
 

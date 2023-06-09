@@ -4,6 +4,7 @@ package golangvectorspace
 
 import (
 	"math"
+	"regexp"
 	"strings"
 )
 
@@ -19,11 +20,17 @@ func (con Concordance) Magnitude() float64 {
 	return math.Sqrt(total)
 }
 
+var nonAlphanumericRegex = regexp.MustCompile(`[^\p{L}\p{N} ]+`)
+
+func clearString(str string) string {
+	return nonAlphanumericRegex.ReplaceAllString(str, "")
+}
+
 func BuildConcordance(document string) Concordance {
 	var con map[string]float64
 	con = make(map[string]float64)
 
-	words := strings.Split(strings.ToLower(document), " ")
+	words := strings.Fields(clearString(strings.ToLower(document)))
 
 	for _, key := range words {
 
